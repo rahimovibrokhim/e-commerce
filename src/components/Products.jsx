@@ -42,7 +42,7 @@ const Products = () => {
   };
 
   return (
-    <div className="container">
+    <div id="products" className="container">
       <form onSubmit={formSubmit} className="flex justify-center">
         <input
           className="inputFinder w-full sm:w-2/4 my-10"
@@ -69,7 +69,7 @@ const Products = () => {
       <div
         className={`${
           empty ? "hidden" : "grid"
-        } products my-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6`}
+        } products my-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6`}
       >
         {filter != undefined ? (
           filter.map((product) => {
@@ -87,7 +87,7 @@ const Products = () => {
                     ${product.price}
                   </p>
                   <Link
-                    to="/product"
+                    to={`/products/${product.id}`}
                     className="buyBtn inline-block mt-6 sm:mt-8 px-10 py-1 text-xl tracking-wider rounded-lg hover:bg-green-800 hover:text-white text-green-800 font-medium"
                   >
                     Buy
