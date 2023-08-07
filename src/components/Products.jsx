@@ -43,9 +43,9 @@ const Products = () => {
 
   return (
     <div id="products" className="container">
-      <form onSubmit={formSubmit} className="flex justify-center">
+      <form onSubmit={formSubmit} className="flex justify-center pt-28">
         <input
-          className="inputFinder w-full sm:w-2/4 my-10"
+          className="inputFinder w-full sm:w-2/4 mb-10"
           type="text"
           placeholder="Search..."
           ref={input}
@@ -69,7 +69,7 @@ const Products = () => {
       <div
         className={`${
           empty ? "hidden" : "grid"
-        } products my-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6`}
+        } products mb-14 mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6`}
       >
         {filter != undefined ? (
           filter.map((product) => {

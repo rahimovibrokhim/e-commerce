@@ -8,10 +8,65 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .container {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 50px;
+}
+
+header {
+  background: #171c24;
+  height: 70px;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  nav .nav-item {
+    transition: .3s;
+  }
+
+  .logo {
+    color: white;
+  }
+
+  .nav-cart {
+    display: none;
+  }
+}
+
+nav .nav-items {
+  display: flex;
+  flex: 1;
+  padding: 0 0 0 40px;
+}
+
+nav .nav-items a,
+.item {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0 15px;
+}
+
+nav .menu-icon,
+nav .cancel-icon {
+  width: 40px;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+nav .menu-icon span,
+nav .cancel-icon {
+  display: none;
 }
 
 #products {
@@ -79,6 +134,67 @@
 }
 
 
+@media (max-width: 1140px) {
+  nav .logo {
+    flex: 2;
+    text-align: center;
+  }
+
+  .nav-cart {
+    display: block;
+  }
+
+  nav .nav-items {
+    position: fixed;
+    z-index: 99;
+    top: 70px;
+    width: 100%;
+    left: -100%;
+    height: 100%;
+    padding: 10px 50px 0 50px;
+    text-align: center;
+    background: #14181f;
+    display: inline-block;
+    transition: left 0.3s ease;
+  }
+
+  nav .nav-items.active {
+    left: 0px;
+  }
+
+  nav .nav-items a {
+    font-size: 20px;
+    margin: 30px 0;
+    display: block;
+    line-height: 40px;
+  }
+
+  nav .menu-icon {
+    display: block;
+  }
+
+  nav .menu-icon span {
+    display: block;
+  }
+
+  nav .menu-icon span.hide {
+    display: none;
+  }
+
+  nav .cancel-icon.show {
+    display: block;
+  }
+
+  .cart {
+    display: none;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+}
 
 @media screen and (max-width:991px) {
   .container {
@@ -98,6 +214,9 @@
 }
 
 @media screen and (max-width:576px) {
+  .logo{
+    font-size: 20px;
+  }
   .container {
     padding: 0 12px;
   }
@@ -111,5 +230,10 @@
 @media screen and (max-width:376px) {
   .container {
     padding: 0 8px;
+  }
+
+  nav .menu-icon,
+  nav .cancel-icon {
+    font-size: 16px;
   }
 }

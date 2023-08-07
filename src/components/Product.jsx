@@ -12,14 +12,13 @@ const Product = () => {
       const response = await fetch(`https://fakestoreapi.com/products/${id}`);
       setProduct(await response.json());
       setLoading(false);
-      console.log(product);
     };
     getProduct();
   }, []);
 
   return (
     <div id="product" className="container">
-      <div className="product grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-5">
+      <div className="product pt-14 grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-5">
         <div className="left flex justify-center my-auto">
           <img src={product.image} alt={product.title} />
         </div>
