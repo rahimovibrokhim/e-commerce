@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div className="container">
       <div className="pt-28 sm:pt-32 pb-10">
-        <p className="text-lg">
+        <p className="text-base sm:text-lg">
           Mukhammad Ibrokhim COLLECTION, commonly known as MI COLLECTION, is a
           French luxury fashion house and company founded in 1854 by Mukhammad
           Ibrokhim. The label's LV monogram appears on most of its products,

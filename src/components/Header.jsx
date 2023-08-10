@@ -29,32 +29,34 @@ const Header = () => {
                 className={`${menuBar ? "hide" : ""} fas fa-bars`}
               ></span>
             </div>
-            <div className={`nav-items ${menuBar ? "active" : ""}`}>
+            <div
+              className={`nav-items flex justify-center ${
+                menuBar ? "active" : ""
+              }`}
+            >
               <Link
+                onClick={closeMenuBar}
                 to="/"
                 className="nav-item capitalize text-lg text-white hover:scale-x-110"
               >
                 Home
               </Link>
               <Link
+                onClick={closeMenuBar}
                 to="/products"
                 className="nav-item capitalize text-lg text-white hover:scale-x-110"
               >
                 Products
               </Link>
               <Link
+                onClick={closeMenuBar}
                 to="/about"
                 className="nav-item capitalize text-lg text-white hover:scale-x-110"
               >
                 About
               </Link>
               <Link
-                to="/"
-                className="nav-item capitalize text-lg text-white hover:scale-x-110"
-              >
-                Contact
-              </Link>
-              <Link
+                onClick={closeMenuBar}
                 to="/cart"
                 className="nav-cart capitalize text-white text-lg"
               >
