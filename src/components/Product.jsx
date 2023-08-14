@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Product = () => {
   const { id } = useParams();
-  const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
     const getProduct = async () => {
-      setLoading(true);
       const response = await fetch(`https://fakestoreapi.com/products/${id}`);
       setProduct(await response.json());
-      setLoading(false);
     };
     getProduct();
   }, []);
@@ -34,12 +31,6 @@ const Product = () => {
           </p>
           <p className="text-3xl sm:text-4xl font-bold">$ {product.price}</p>
           <p className="text-lg mt-5 text-zinc-500">{product.description}</p>
-          <div className="flex gap-3 mt-4 mb-6">
-            <button className="toCartBtn py-3 px-6">Add to Cart</button>
-            <Link to="/cart" className="toCartBtn py-3 px-6">
-              Go to Cart
-            </Link>
-          </div>
         </div>
       </div>
     </div>

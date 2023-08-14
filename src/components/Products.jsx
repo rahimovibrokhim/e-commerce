@@ -1,11 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/slices/cart";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState(products);
   const [empty, setEmpty] = useState(false);
   const input = useRef("");
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -75,7 +82,7 @@ const Products = () => {
           filter.map((product) => {
             return (
               <div
-                className="card p-6 rounded-2xl text-center"
+                className="card px-4 py-5 rounded-2xl text-center"
                 key={product.id}
               >
                 <img src={product.image} alt={product.title} />
@@ -86,12 +93,20 @@ const Products = () => {
                   <p className="card-text mt-3 text-xl font-medium">
                     ${product.price}
                   </p>
-                  <Link
-                    to={`/products/${product.id}`}
-                    className="buyBtn inline-block mt-6 sm:mt-8 px-10 py-1 text-xl tracking-wider rounded-lg hover:bg-green-800 hover:text-white text-green-800 font-medium"
-                  >
-                    Buy
-                  </Link>
+                  <div className="flex items-center  justify-around mt-4 gap-2">
+                    <Link
+                      to={`/products/${product.id}`}
+                      className="readDetailsBtn w-1/2  py-2  text-lg tracking-wider rounded-lg bg-green-800 text-white"
+                    >
+                      Read More
+                    </Link>
+                    <button
+                      onClick={() => handleAddToCart(product)}
+                      className="buyBtn w-1/2 py-2  text-lg tracking-wider rounded-lg text-white"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
                 </div>
               </div>
             );

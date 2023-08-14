@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const HomeTop = () => {
   const [menuBar, setMenuBar] = useState(false);
 
-  const closeMenuBar = () => {
-    setMenuBar(false);
-  };
-
-  const openMenuBar = () => {
-    setMenuBar(true);
-  };
   return (
     <div
       className="homeTop"
@@ -24,42 +19,42 @@ const HomeTop = () => {
         <nav>
           <div className="menu-icon float-right">
             <span
-              onClick={openMenuBar}
+              onClick={() => setMenuBar(true)}
               className={`${menuBar ? "hide" : ""} fas fa-bars`}
             ></span>
           </div>
           <div className={`nav-items  flex ${menuBar ? "active" : ""}`}>
             <Link
-              onClick={closeMenuBar}
+              onClick={() => setMenuBar(false)}
               to="/"
               className="nav-item capitalize text-lg text-white hover:scale-x-110"
             >
               Home
             </Link>
             <Link
-              onClick={closeMenuBar}
+              onClick={() => setMenuBar(false)}
               to="/products"
               className="nav-item capitalize text-lg text-white hover:scale-x-110"
             >
               Products
             </Link>
             <Link
-              onClick={closeMenuBar}
+              onClick={() => setMenuBar(false)}
               to="/about"
               className="nav-item capitalize text-lg text-white hover:scale-x-110"
             >
               About
             </Link>
             <Link
-              onClick={closeMenuBar}
+              onClick={() => setMenuBar(false)}
               to="/cart"
               className="nav-cart capitalize text-white text-lg"
             >
-              Cart
+              <FontAwesomeIcon icon={faCartShopping} />
             </Link>
           </div>
           <div
-            onClick={closeMenuBar}
+            onClick={() => setMenuBar(false)}
             className={`${menuBar ? "show" : ""} cancel-icon float-right`}
           >
             <span className="fas fa-times"></span>
@@ -76,7 +71,7 @@ const HomeTop = () => {
           to="/cart"
           className="cart capitalize text-white text-lg text-right"
         >
-          Cart
+          <FontAwesomeIcon icon={faCartShopping} />
         </Link>
       </div>
     </div>
