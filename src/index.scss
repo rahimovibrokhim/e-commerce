@@ -246,12 +246,23 @@ nav .cancel-icon {
   .countBtn {
     color: white;
     background-color: rgb(99, 98, 98);
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 20px;
+    background-color: rgb(146, 142, 142);
+    font-size: 14px;
+    padding: 0 5px;
+    border: 1px solid black;
 
     &:disabled {
       background-color: rgb(176, 172, 172);
+    }
+  }
+
+  .productCount {
+    .amount {
+      width: 50px;
+      padding: 10px;
+      background-color: #f3f3f3 !important;
+      text-align: center;
+      border: 1px solid black;
     }
   }
 
@@ -266,8 +277,45 @@ nav .cancel-icon {
       background-color: rgb(114, 8, 8);
     }
   }
+
+  .productTotalPrice p {
+    width: 40px;
+  }
 }
 
+// loading
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid rgb(23, 162, 184);
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  margin-top: 300px;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// loading end
 
 @media (max-width: 1140px) {
   nav .logo {

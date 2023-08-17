@@ -8,7 +8,7 @@ import {
 } from "../store/slices/cart";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark, faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const CartList = () => {
   const { items } = useSelector((store) => store.cart);
@@ -52,7 +52,7 @@ const CartList = () => {
                 >
                   <div className="left flex items-center">
                     <div className="productImg">
-                      <img src={product.image} alt="Product image" />
+                      <img className="px-2" src={product.image} alt="Product image" />
                     </div>
                     <div className="productInfo flex flex-col gap-3 px-3">
                       <p className="text-xl lg:text-2xl xl:text-3xl font-semibold line-clamp-2">
@@ -65,27 +65,30 @@ const CartList = () => {
                   </div>
                   <div className="right flex items-center justify-around">
                     <div className="productPrice">
-                      <p className="text-center">${product.price.toFixed(1)}</p>
+                      <p className="text-center">${product.price.toFixed(2)}</p>
                     </div>
-                    <div className="productCount gap-3 flex justify-center items-center">
-                      <button
-                        onClick={() => handleDecCount(product.id)}
-                        disabled={count == 1}
-                        className="countBtn"
-                      >
-                        -
-                      </button>
-                      <p>{count}</p>
-                      <button
-                        onClick={() => handleIncCount(product.id)}
-                        className="countBtn"
-                      >
-                        +
-                      </button>
+                    <div className="productCount flex justify-center items-center">
+                      <p className="amount">{count}</p>
+                      <div className="flex flex-col">
+                        <button
+                          onClick={() => handleIncCount(product.id)}
+                          className="countBtn"
+                        >
+                          <FontAwesomeIcon icon={faChevronUp} />
+                        </button>
+                        <button
+                          onClick={() => handleDecCount(product.id)}
+                          disabled={count == 1}
+                          className="countBtn"
+                        >
+                          <FontAwesomeIcon icon={faChevronDown} />
+
+                        </button>
+                      </div>
                     </div>
                     <div className="productTotalPrice">
                       <p className="text-center">
-                        ${(product.price * count).toFixed(1)}
+                        ${(product.price * count).toFixed(2)}
                       </p>
                     </div>
                     <div className="removeProductFromCart flex justify-center">

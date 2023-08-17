@@ -50,37 +50,45 @@ const Products = () => {
 
   return (
     <div id="products" className="container">
-      <form onSubmit={formSubmit} className="flex justify-center pt-28">
-        <input
-          className="inputFinder w-full sm:w-2/4 mb-10"
-          type="text"
-          placeholder="Search..."
-          ref={input}
-        />
-      </form>
+      {filter.length == 0 ? (<div className="flex">
+        <div className="loader ms-auto me-auto"></div>
+      </div>) : (
+        <>
+          <form onSubmit={formSubmit} className="flex justify-center pt-28">
+            <input
+              className="inputFinder w-full sm:w-2/4 mb-10"
+              type="text"
+              placeholder="Search..."
+              ref={input}
+            />
+          </form>
 
-      <div className="cloth-type flex content-center justify-center flex-wrap gap-2">
-        <button onClick={() => setFilter(products)}>All</button>
-        <button onClick={() => filterProducts("men's clothing")}>
-          men's clothing
-        </button>
-        <button onClick={() => filterProducts("women's clothing")}>
-          Women's clothing
-        </button>
-        <button onClick={() => filterProducts("electronics")}>
-          electronics
-        </button>
-        <button onClick={() => filterProducts("jewelery")}>jewelery</button>
-      </div>
+          <div className="cloth-type flex content-center justify-center flex-wrap gap-2">
+            <button onClick={() => setFilter(products)}>All</button>
+            <button onClick={() => filterProducts("men's clothing")}>
+              men's clothing
+            </button>
+            <button onClick={() => filterProducts("women's clothing")}>
+              Women's clothing
+            </button>
+            <button onClick={() => filterProducts("electronics")}>
+              electronics
+            </button>
+            <button onClick={() => filterProducts("jewelery")}>jewelery</button>
+          </div>
 
-      <div
-        className={`${
-          empty ? "hidden" : "grid"
-        } products mb-14 mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6`}
-      >
-        {filter != undefined ? (
-          filter.map((product) => {
-            return (
+          <p
+            className={`${empty ? "block" : "hidden"
+              } notFound text-4xl mt-8 text-red-700 font-semibold text-center`}
+          >
+            No results
+          </p>
+
+          <div
+            className={`${empty ? "hidden" : "grid"
+              } products mb-14 mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6`}
+          >
+            {filter.map((product) => (
               <div
                 className="card px-4 py-5 rounded-2xl text-center"
                 key={product.id}
@@ -109,21 +117,11 @@ const Products = () => {
                   </div>
                 </div>
               </div>
-            );
-          })
-        ) : (
-          <p>Loading</p>
-        )}
-      </div>
+            ))}
+          </div>
 
-      <p
-        className={`${
-          empty ? "block" : "hidden"
-        } notFound text-4xl mt-8 text-red-700 font-semibold text-center`}
-      >
-        No results
-      </p>
-    </div>
+        </>)}
+    </div >
   );
 };
 
