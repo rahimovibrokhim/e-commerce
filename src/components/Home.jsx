@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import HomeTop from "./HomeTop";
-// 
+
 const Home = () => {
   return (
     <>
