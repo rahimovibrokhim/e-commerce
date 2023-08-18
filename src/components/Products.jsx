@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/slices/cart";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -50,11 +52,13 @@ const Products = () => {
 
   return (
     <div id="products" className="container">
-      {filter.length == 0 ? (<div className="flex">
-        <div className="loader ms-auto me-auto"></div>
-      </div>) : (
+      {filter.length == 0 ? (
+        <div className="flex">
+          <div className="loader ms-auto me-auto"></div>
+        </div>
+      ) : (
         <>
-          <form onSubmit={formSubmit} className="flex justify-center pt-28">
+          <form onSubmit={formSubmit} className="flex justify-center gap-4 pt-28">
             <input
               className="inputFinder w-full sm:w-2/4 mb-10"
               type="text"
@@ -62,6 +66,25 @@ const Products = () => {
               ref={input}
             />
           </form>
+          <div className="dropdown filter">
+            <div className="dropdownBtn">
+              Catalog - <FontAwesomeIcon icon={faFilter} />
+            </div>
+            <div className="dropdownContent cloth-type flex flex-col">
+              <button onClick={() => setFilter(products)}>All</button>
+              <button onClick={() => filterProducts("men's clothing")}>
+                men's clothing
+              </button>
+              <button onClick={() => filterProducts("women's clothing")}>
+                Women's clothing
+              </button>
+              <button onClick={() => filterProducts("electronics")}>
+                electronics
+              </button>
+              <button onClick={() => filterProducts("jewelery")}>jewelery</button>
+            </div>
+          </div>
+
 
           <div className="cloth-type flex content-center justify-center flex-wrap gap-2">
             <button onClick={() => setFilter(products)}>All</button>

@@ -47,7 +47,7 @@ const CartList = () => {
             items.map(({ product, count }) => {
               return (
                 <div
-                  className="cartProduct flex items-center py-4"
+                  className="cartProduct overflow-hidden flex items-center py-4"
                   key={product.id}
                 >
                   <div className="left flex items-center">
